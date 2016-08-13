@@ -12,12 +12,11 @@
       = f.text_area :redirect_uri, class: 'form-control'
       = doorkeeper_errors_for application, :redirect_uri
       %span.help-block
-        Use one line per URI
+        每行使用一个URI
       - if Doorkeeper.configuration.native_redirect_uri
         %span.help-block
-          Use
+          本地测试使用
           %code= Doorkeeper.configuration.native_redirect_uri
-          for local tests
   .form-actions
     = f.submit 'Submit', class: "btn btn-save wide"
-    = link_to "Cancel", admin_applications_path, class: "btn btn-default"
+    = link_to "取消", admin_applications_path, class: "btn btn-default"

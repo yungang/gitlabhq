@@ -3,7 +3,7 @@
 
   %fieldset.sign-in
     %legend
-      Sign in/Sign up pages:
+      登录/登出 页面:
   .form-group
     = f.label :title, class: 'control-label'
     .col-sm-10
@@ -13,7 +13,7 @@
     .col-sm-10
       = f.text_area :description, class: "form-control", rows: 10
       .hint
-        Description parsed with #{link_to "GitLab Flavored Markdown", help_page_path('markdown/markdown'), target: '_blank'}.
+        Description parsed with #{link_to "GitLab 风格的标记语言", help_page_path('markdown/markdown'), target: '_blank'}.
   .form-group
     = f.label :logo, class: 'control-label'
     .col-sm-10
@@ -21,35 +21,35 @@
         = image_tag @appearance.logo_url, class: 'appearance-logo-preview'
         - if @appearance.persisted?
           %br
-          = link_to 'Remove logo', logo_admin_appearances_path, data: { confirm: "Logo will be removed. Are you sure?"}, method: :delete, class: "btn btn-remove btn-small remove-logo"
+          = link_to '删除 logo', logo_admin_appearances_path, data: { confirm: "Logo 将被删除。你确定吗？"}, method: :delete, class: "btn btn-remove btn-small remove-logo"
         %hr
       = f.hidden_field :logo_cache
       = f.file_field :logo, class: ""
       .hint
-        Maximum file size is 1MB. Pages are optimized for a 640x360 px logo.
+        文件最大为1MB。页面将被优化为 640x360 像素的logo。
 
   %fieldset.app_logo
     %legend
-      Navigation bar:
+      导航栏:
   .form-group
-    = f.label :header_logo, 'Header logo', class: 'control-label'
+    = f.label :header_logo, '头logo', class: 'control-label'
     .col-sm-10
       - if @appearance.header_logo?
         = image_tag @appearance.header_logo_url, class: 'appearance-light-logo-preview'
         - if @appearance.persisted?
           %br
-          = link_to 'Remove header logo', header_logos_admin_appearances_path, data: { confirm: "Header logo will be removed. Are you sure?"}, method: :delete, class: "btn btn-remove btn-small remove-logo"
+          = link_to '删除头logo', header_logos_admin_appearances_path, data: { confirm: "头logo将被删除。你确定吗？"}, method: :delete, class: "btn btn-remove btn-small remove-logo"
         %hr
       = f.hidden_field :header_logo_cache
       = f.file_field :header_logo, class: ""
       .hint
-        Maximum file size is 1MB. Pages are optimized for a 72x72 px header logo
+        文件最大为1MB。页面将被优化为 72x72 像素的头logo。
 
   .form-actions
-    = f.submit 'Save', class: 'btn btn-save append-right-10'
+    = f.submit '保存', class: 'btn btn-save append-right-10'
     - if @appearance.persisted?
-      = link_to 'Preview last save', preview_admin_appearances_path, class: 'btn', target: '_blank'
+      = link_to '前面最后一次保存', preview_admin_appearances_path, class: 'btn', target: '_blank'
 
     - if @appearance.updated_at
       %span.pull-right
-        Last edit #{time_ago_with_tooltip(@appearance.updated_at)}
+        最后就编辑 #{time_ago_with_tooltip(@appearance.updated_at)}
